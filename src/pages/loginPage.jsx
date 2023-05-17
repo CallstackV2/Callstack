@@ -38,7 +38,7 @@ function loginPage() {
         dispatch(setErrorMessage([]));
         dispatch(setCurrentUser(username));
         navigate(`/`);
-        getPosts();
+        // getPosts();
       } else {
         dispatch(setErrorMessage([<p>wrong password/username</p>]));
       }
@@ -103,56 +103,55 @@ function loginPage() {
   //   },
   // ];
 
-  function getPosts() {
-    fetch("/main/getAll")
-      .then((response) => response.json())
-      .then((posts) => {
-        for (let i = 0; i < posts.length; i++) {
-          dispatch(
-            setAllPosts(
-              <div>
-                <button
-                  className="mainPost"
-                  onClick={() => {
-                    dispatch(
-                      setCurrentPost(
-                        <div className="currentClickedPost">
-                          <h1>{posts[i].postTitle}</h1>
-                          <p>{posts[i].postBody}</p>
-                          <div>{posts[i].postTag}</div>
-                          <div>{posts[i].numLikes}</div>
-                          <div>{posts[i].numComments}</div>
-                        </div>
-                      )
-                    );
-                    getComments(posts[i]._id);
-                    dispatch(setCurrentPostId(posts[i]._id));
-                    // the two dots are meaningless - works when routed to /post
-                    navigate(`../post`);
-                  }}
-                >
-                  <h1>{posts[i].postTitle}</h1>
-                  <p>{posts[i].postBody}</p>
-                  <div>{posts[i].postTag}</div>
-                  <div>{posts[i].numLikes}</div>
-                  <div>{posts[i].numComments}</div>
-                </button>
+  // function getPosts() {
+  //   fetch("/main/getAll")
+  //     .then((response) => response.json())
+  //     .then((posts) => {
+  //       for (let i = 0; i < posts.length; i++) {
+  //         dispatch(
+  //           setAllPosts(
+  //             <div>
+  //               <button
+  //                 className="mainPost"
+  //                 onClick={() => {
+  //                   dispatch(
+  //                     setCurrentPost(
+  //                       <div className="currentClickedPost">
+  //                         <h1>{posts[i].postTitle}</h1>
+  //                         <p>{posts[i].postBody}</p>
+  //                         <div>{posts[i].postTag}</div>
+  //                         <div>{posts[i].numLikes}</div>
+  //                         <div>{posts[i].numComments}</div>
+  //                       </div>
+  //                     )
+  //                   );
+  //                   getComments(posts[i]._id);
+  //                   dispatch(setCurrentPostId(posts[i]._id));
+  //                   navigate(`../post`);
+  //                 }}
+  //               >
+  //                 <h1>{posts[i].postTitle}</h1>
+  //                 <p>{posts[i].postBody}</p>
+  //                 <div>{posts[i].postTag}</div>
+  //                 <div>{posts[i].numLikes}</div>
+  //                 <div>{posts[i].numComments}</div>
+  //               </button>
 
-                <div>
-                  <button>Tags</button>
-                  <button>Like</button>
-                  <button>Comment</button>
-                  <button>Date</button>
-                </div>
-              </div>
-            )
-          );
-        }
-      })
-      .catch((err) => {
-        console.log("There was an error loading posts", err);
-      });
-  }
+  //               <div>
+  //                 <button>Tags</button>
+  //                 <button>Like</button>
+  //                 <button>Comment</button>
+  //                 <button>Date</button>
+  //               </div>
+  //             </div>
+  //           )
+  //         );
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log("There was an error loading posts", err);
+  //     });
+  // }
 
   function getComments(postId) {
     fetch("/main/getPostComments", {
