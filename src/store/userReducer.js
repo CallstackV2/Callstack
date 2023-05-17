@@ -39,6 +39,8 @@ export const userReducer = createSlice({
           : [...state.searchResultPosts, action.payload];
     },
     setAllPosts: (state, action) => {
+      console.log('action',action.payload)
+      console.log('state',state)
       state.allPosts = [action.payload, ...state.allPosts];
     },
     setCurrentComments: (state, action) => {
