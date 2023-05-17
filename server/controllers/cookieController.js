@@ -15,4 +15,16 @@ cookieController.setSSIDCookie = (req, res, next) => {
   // need some error handling here?
 };
 
+// getCookie:
+cookieController.getCookie = (req, res, next) => {
+  // if there is no cookie stored with a key 'ssid', set res.locals.user to null
+  if (!req.cookies.ssid) {
+    res.locals.user === null;
+  } else {
+  // else (there is a ssid cookie in the browser), assign its value to res.locals.user
+  res.locals.user = req.cookies.ssid;
+  }
+  return next();
+}
+
 module.exports = cookieController;
