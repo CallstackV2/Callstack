@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const PORT = 3000;
+// require('dovenv').config();
 
 // Parsing urlencoded content in request body
 app.use(express.urlencoded({ extended: true }));
