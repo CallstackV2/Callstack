@@ -68,4 +68,27 @@ userController.verifyUser = (req, res, next) => {
     });
 };
 
+// Given a cookie corresponding to a user's id in DB, find that user and return their username
+userController.findUserByCookie = (req, res, next) => {
+  // if res.locals.user is null, set res.locals.username to null and return next
+  if (!res.locals.user) {
+    res.locals.username === null;
+    return next();
+  } else {
+  // else (if res.locals.user is not null), search the database for the user with an '_id' equal to res.locals.user and return the username
+  User.findOne({ "_id": res.locals.user }, 'username')
+    .then((user) => {
+      res.locals.username = user.username;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: `findUserByCookie: ${err}`,
+        status: 400,
+        message: { err: "error occurred in findUserByCookie controller" },
+      });
+    });
+  }
+};
+
 module.exports = userController;

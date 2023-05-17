@@ -45,63 +45,63 @@ function loginPage() {
     });
   }
 
-  function mockLogin(username, password) {
-    console.log(username, password);
-    if (username === "a" && password === "a") {
-      dispatch(setErrorMessage([]));
-      dispatch(setCurrentUser(username));
-      navigate(`/`);
-    } else dispatch(setErrorMessage([<p>incorrect username/password</p>]));
-  }
+  // function mockLogin(username, password) {
+  //   console.log(username, password);
+  //   if (username === "a" && password === "a") {
+  //     dispatch(setErrorMessage([]));
+  //     dispatch(setCurrentUser(username));
+  //     navigate(`/`);
+  //   } else dispatch(setErrorMessage([<p>incorrect username/password</p>]));
+  // }
 
-  const mockData = [
-    {
-      date: 5 / 23 / 2023,
-      userId: "drake",
-      postTitle: "Can I buy a porsche with a total comp of $300k?",
-      postBody: `Now I got a house in LA Now I got a bigger pool than Ye And look man, Ye's pool is nice Mine's just big is what I'm saying`,
-      postTag: "default",
-      numLikes: 1,
-    },
-    {
-      date: 5 / 23 / 2023,
-      userId: "wayne",
-      postTitle:
-        "I just rejected a $500k total comp from Amazon because I want to work remote",
-      postBody: `just testing this`,
-      postTag: "default",
-      numLikes: 1,
-    },
-    {
-      date: 5 / 23 / 2023,
-      userId: "drake",
-      postTitle: "This is our first title",
-      postBody: `Now I got a house in LA Now I got a bigger pool than Ye And look man, Ye's pool is nice Mine's just big is what I'm saying`,
-      postTag: "default",
-      numLikes: 5000,
-    },
-    {
-      date: 5 / 23 / 2023,
-      userId: "wayne",
-      postTitle: "This is our second title",
-      postBody: `adulthood is emailing "sorry for the delayed response!" back and forth until one of you dies`,
-      postTag: "default",
-      numLikes: 1,
-    },
-  ];
+  // const mockData = [
+  //   {
+  //     date: 5 / 23 / 2023,
+  //     userId: "drake",
+  //     postTitle: "Can I buy a porsche with a total comp of $300k?",
+  //     postBody: `Now I got a house in LA Now I got a bigger pool than Ye And look man, Ye's pool is nice Mine's just big is what I'm saying`,
+  //     postTag: "default",
+  //     numLikes: 1,
+  //   },
+  //   {
+  //     date: 5 / 23 / 2023,
+  //     userId: "wayne",
+  //     postTitle:
+  //       "I just rejected a $500k total comp from Amazon because I want to work remote",
+  //     postBody: `just testing this`,
+  //     postTag: "default",
+  //     numLikes: 1,
+  //   },
+  //   {
+  //     date: 5 / 23 / 2023,
+  //     userId: "drake",
+  //     postTitle: "This is our first title",
+  //     postBody: `Now I got a house in LA Now I got a bigger pool than Ye And look man, Ye's pool is nice Mine's just big is what I'm saying`,
+  //     postTag: "default",
+  //     numLikes: 5000,
+  //   },
+  //   {
+  //     date: 5 / 23 / 2023,
+  //     userId: "wayne",
+  //     postTitle: "This is our second title",
+  //     postBody: `adulthood is emailing "sorry for the delayed response!" back and forth until one of you dies`,
+  //     postTag: "default",
+  //     numLikes: 1,
+  //   },
+  // ];
 
-  const mockComments = [
-    {
-      userId: "KevinisDaBest1337",
-      commentBody: "Such an informative post!",
-      // numLikes: 46,
-    },
-    {
-      userId: "PraiseForPraise",
-      commentBody: "Redux is the best, people just don't get it",
-      // numLikes: 2,
-    },
-  ];
+  // const mockComments = [
+  //   {
+  //     userId: "KevinisDaBest1337",
+  //     commentBody: "Such an informative post!",
+  //     // numLikes: 46,
+  //   },
+  //   {
+  //     userId: "PraiseForPraise",
+  //     commentBody: "Redux is the best, people just don't get it",
+  //     // numLikes: 2,
+  //   },
+  // ];
 
   function getPosts() {
     fetch("/main/getAll")
@@ -127,6 +127,7 @@ function loginPage() {
                     );
                     getComments(posts[i]._id);
                     dispatch(setCurrentPostId(posts[i]._id));
+                    // the two dots are meaningless - works when routed to /post
                     navigate(`../post`);
                   }}
                 >

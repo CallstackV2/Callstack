@@ -9,6 +9,7 @@ import PostPage from "./pages/postPage";
 import WelcomePage from "./pages/WelcomePage";
 
 function App() {
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.userReducer.currentUser);
   const currentPost = useSelector((state) => state.userReducer.currentPost);
 
@@ -16,8 +17,17 @@ function App() {
   // navigate to /currentUser
 
   useEffect(() => {
-    // fetch to server with session cookie
-  });
+    // fetch to server to check for a session cookie
+    fetch('/login/auth')
+      .then(res => res)
+      .then(res => {
+        // if the server returns a 200 status code, set CurrentUser (on State) to the response from the server, which is the logged in user's username
+        if (res.status === 200) dispatch(setCurrentUser(res));
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
 
   return (
     <Routes>

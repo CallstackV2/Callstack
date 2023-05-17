@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
 // Connecting to MongoDB
-const MONGO_URI =
-  "mongodb+srv://sjkim:teamdesk@cluster0.i4p1ki5.mongodb.net/?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: "users",
+    dbName: "Callstack",
   })
   .then(() => console.log("Connected to Mongo DB"))
   .catch((err) => console.log(err));
