@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPost, setCurrentPostId } from '../store/userReducer';
+import { setCurrentPost, setCurrentPostId, setCurrentComments } from '../store/userReducer';
 import { useNavigate } from "react-router-dom";
 
 //This will render the actual title and post
@@ -10,9 +10,39 @@ import { useNavigate } from "react-router-dom";
 function MainPagePost(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentPost = useSelector((state) => state.userReducer.currentPost);
+  // const currentPost = useSelector((state) => state.userReducer.currentPost);
+  // const currentPostId = useSelector((state) => state.userReducer.currentPostId);
   // console.log(props.post)
   const { post } = props; 
+
+  function getComments(postId) {
+    fetch("/main/getPostComments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/JSON",
+      },
+      body: JSON.stringify({
+        postId: postId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        dispatch(setCurrentComments("delete"));
+        for (let i = 0; i < res.length; i++) {
+          dispatch(
+            setCurrentComments(
+              // UPDATE currentComments from HTML element to an object with properties: 
+              <div className="currentCommentBody">
+                {/* <p>{res[i].userId}</p> */}
+                <p>{res[i].commentBody}</p>
+                {/* <p>{mockComments[i].numLikes}</p> */}
+              </div>
+            )
+          );
+        }
+      });
+  }
+
   return (
     <div>
       <button
@@ -31,8 +61,9 @@ function MainPagePost(props) {
             //   </div>
             )
           );
-          getComments(post._id);
+          // post._id should contain the postid for that specific post
           dispatch(setCurrentPostId(post._id));
+          getComments(post._id);
           navigate(`../post`);
         }}
       >
@@ -41,7 +72,7 @@ function MainPagePost(props) {
         <div>{post.postTag}</div>
         <div>{post.numLikes}</div>
         <div>{post.numComments}</div>
-        Button Text
+        <div>{post._id}</div>
       </button>
 
       {/* <div>

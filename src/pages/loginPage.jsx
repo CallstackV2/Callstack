@@ -153,32 +153,6 @@ function loginPage() {
   //     });
   // }
 
-  function getComments(postId) {
-    fetch("/main/getPostComments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/JSON",
-      },
-      body: JSON.stringify({
-        postId: postId,
-      }),
-    })
-      .then((response) => response.json())
-      .then((res) => {
-        dispatch(setCurrentComments("delete"));
-        for (let i = 0; i < res.length; i++) {
-          dispatch(
-            setCurrentComments(
-              <div className="currentCommentBody">
-                {/* <p>{res[i].userId}</p> */}
-                <p>{res[i].commentBody}</p>
-                {/* <p>{mockComments[i].numLikes}</p> */}
-              </div>
-            )
-          );
-        }
-      });
-  }
 
   return (
     <div className="loginPageDiv">
