@@ -15,8 +15,10 @@ sessionController.isLoggedIn = async (req, res, next) => {
 
     if (!session) {
       // no session found
+      console.log('test')
       return res.send(false); // Redirect to Signup here? Or login or main landing page?
     } else {
+      
       return next();
     }
   } catch {
