@@ -28,18 +28,21 @@ function MainPagePost(props) {
       .then((response) => response.json())
       .then((res) => {
         dispatch(setCurrentComments("delete"));
+        const commentArray = [];
         for (let i = 0; i < res.length; i++) {
-          dispatch(
-            setCurrentComments(
-              // UPDATE currentComments from HTML element to an object with properties: 
-              <div className="currentCommentBody">
-                {/* <p>{res[i].userId}</p> */}
-                <p>{res[i].commentBody}</p>
-                {/* <p>{mockComments[i].numLikes}</p> */}
-              </div>
-            )
-          );
+          commentArray.push(res[i].commentBody);
         }
+        console.log(`commentArray on main page: ${commentArray}`)
+        dispatch(
+          setCurrentComments( commentArray
+            // UPDATE currentComments from HTML element to an object with properties: 
+            // <div className="currentCommentBody">
+            //   {/* <p>{res[i].userId}</p> */}
+            //   <p>{res[i].commentBody}</p>
+            //   {/* <p>{mockComments[i].numLikes}</p> */}
+            // </div>
+          )
+        );
       });
   }
 
