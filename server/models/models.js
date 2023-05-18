@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
+// import dotenv from "dotenv";
 
 // Connecting to MongoDB
-const MONGO_URI = process.env.MONGO_URI;
+// console.log(process.env.MONGO_URI)
+// const MONGO_URI = "mongodb+srv://dummyuser:dummyuser123@cluster0.xfmlhqj.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URI = process.env.MONGO_URI
+
 
 mongoose
   .connect(MONGO_URI, {

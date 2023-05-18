@@ -23,12 +23,12 @@ function PostBar() {
         console.log('I am in getPosts');
 
         let updatedPostArray = [];
-
+      
 
         for (let i = 0; i < posts.length; i++) {
           dispatch(
             setAllPosts(
-
+              
                 {
                 title: posts[i].title,
                 body: posts[i].body,
@@ -47,7 +47,7 @@ function PostBar() {
 
         console.log('current post array', postArray);
       })
-.catch((err) => {
+      .catch((err) => {
         console.log('There was an error loading posts', err);
       });
   }
