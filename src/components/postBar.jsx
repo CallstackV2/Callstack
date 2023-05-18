@@ -1,56 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TagDropDownButton from "./TagDropDownButton";
 import TagLinks from "./tagLinks";
 import { useSelector, useDispatch } from "react-redux";
 import { setAllPosts, setCurrentPost } from "../store/userReducer";
 import { useNavigate } from "react-router-dom";
+import SubContainer from '../containers/subContainer';
 
 function PostBar() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.userReducer.currentUser);
   const navigate = useNavigate();
 
-  function mockPost(newPostTitle, newPostBody, username, postTag) {
-    dispatch(
-      setAllPosts(
-        <div>
-          <div>
-            <img src="" alt="user-photo" />
-          </div>
+  useEffect(() => {
+    getPosts();
+  }, []);
 
-          <button
-            className="mainPost"
-            onClick={() => {
-              dispatch(
-                setCurrentPost(
-                  <div>
-                    <h1>{newPostTitle}</h1>
-                    <p>{newPostBody}</p>
-                    <div>{postTag}</div>
-                    <div>5</div>
-                    <div>2</div>
-                  </div>
-                )
-              );
-              navigate(`../post`);
-            }}
-          >
-            <h1>{newPostTitle}</h1>
-            <p>{newPostBody}</p>
-            <div>{postTag}</div>
-            <div>4</div>
-            <div>2</div>
-          </button>
+  function getPosts() {
+    console.log('entered getPosts function');
+    fetch('/main/getAll')
+      .then((response) => response.json())
+      .then((posts) => {
+        console.log('I am in getPosts');
 
-          <div>
-            <button>Tags</button>
-            <button>Like</button>
-            <button>Comment</button>
-            <button>Date</button>
-          </div>
-        </div>
-      )
-    );
+        let updatedPostArray = [];
+      
+
+        for (let i = 0; i < posts.length; i++) {
+          dispatch(
+            setAllPosts(
+              
+                {
+                title: posts[i].title,
+                body: posts[i].body,
+                tags: posts[i].postTag,
+                numLikes: posts[i].numLikes,
+                numComments: posts[i].numComments,
+              }
+            )
+          );
+          updatedPostArray.push(
+            <MainPagePost post={posts[i]} id={i} key={i} />
+          );
+        }
+        console.log('updated post array', updatedPostArray);
+        setPostArray(updatedPostArray);
+
+        console.log('current post array', postArray);
+      })
+      .catch((err) => {
+        console.log('There was an error loading posts', err);
+      });
   }
 
   function makePost(newPostTitle, newPostBody, postTag) {
@@ -66,41 +65,16 @@ function PostBar() {
       }),
     }).then(() => {
       dispatch(
-        setAllPosts(
-          <div>
-            <button
-              className="mainPost"
-              onClick={() => {
-                dispatch(
-                  setCurrentPost(
-                    <div>
-                      <h1>{newPostTitle}</h1>
-                      <p>{newPostBody}</p>
-                      <div>{postTag}</div>
-                      <div>0</div>
-                      <div>0</div>
-                    </div>
-                  )
-                );
-                navigate(`./post`);
-              }}
-            >
-              <h1>{newPostTitle}</h1>
-              <p>{newPostBody}</p>
-              <div>{postTag}</div>
-              <div>0</div>
-              <div>0</div>
-            </button>
-
-            <div>
-              <button>Tags</button>
-              <button>Like</button>
-              <button>Comment</button>
-              <button>Date</button>
-            </div>
-          </div>
-        )
+        setAllPosts({
+          title: newPostTitle,
+          body: newPostBody,
+          tags: postTag,
+          numLikes: 0,
+          numComments: 0,
+        })
       );
+      getPosts();
+      window.location.reload();
     });
   }
   return (
@@ -130,6 +104,10 @@ function PostBar() {
               document.querySelector("#newPostBody").value,
               "uncategorized"
             );
+            document.querySelector("#newPostTitle").value = ''
+            document.querySelector("#newPostBody").value = ''
+
+
           }}
         >
           Post

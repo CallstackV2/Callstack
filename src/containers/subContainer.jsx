@@ -75,31 +75,10 @@ function SubContainer() {
           updatedPostArray.push(
             <MainPagePost post={posts[i]} id={i} key={i} />
           );
-
-          // stateArray.push({
-          //       title: posts[i].title,
-          //       body: posts[i].body,
-          //       tags: posts[i].postTag,
-          //       numLikes: posts[i].numLikes,
-          //       numComments: posts[i].numComments,
-          //     });
         }
         console.log('updated post array', updatedPostArray);
         setPostArray(updatedPostArray);
 
-        // console.log('state', stateArray)
-
-        // dispatch(setAllPosts([<p>{stateArray[0].title}</p>]))
-
-        // console.log('hi');
-        // getPosts();
-        // const allPosts = useSelector((state) => state.userReducer.allPosts);
-        // console.log('current state of all posts:', allPosts)
-        // console.log(allPosts);
-        // let postArray = [];
-        // for (let i = 0; i < allPosts.length; i++) {
-        //   postArray.push(<mainPagePost post={allPosts[i]} id={i} />);
-        // }
         console.log('current post array', postArray);
       })
       .catch((err) => {
@@ -107,11 +86,6 @@ function SubContainer() {
       });
   }
 
-  // let posts = [];
-  // for (let i = 0; i < allPosts.length; i++) {
-  //   posts.push(<mainPagePost post={allPosts[i]} id={i} />);
-  // }
-  // console.log(`postArray: ${postArray}`);
   return (
     <div className = "allPostsDiv">
       <div>
@@ -124,3 +98,4 @@ function SubContainer() {
 }
 
 export default SubContainer;
+// export { getPosts } ;
