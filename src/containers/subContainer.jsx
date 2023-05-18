@@ -113,7 +113,7 @@ function SubContainer() {
   // }
   // console.log(`postArray: ${postArray}`);
   return (
-    <div>
+    <div className = "allPostsDiv">
       <div>
         {postArray.map((post, index) => (
           <div key={index}>{post}</div>
