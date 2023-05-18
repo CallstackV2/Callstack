@@ -75,14 +75,6 @@ function SubContainer() {
           updatedPostArray.push(
             <MainPagePost post={posts[i]} id={i} key={i} />
           );
-
-          // stateArray.push({
-          //       title: posts[i].title,
-          //       body: posts[i].body,
-          //       tags: posts[i].postTag,
-          //       numLikes: posts[i].numLikes,
-          //       numComments: posts[i].numComments,
-          //     });
         }
         console.log('updated post array', updatedPostArray);
         setPostArray(updatedPostArray);
@@ -95,7 +87,7 @@ function SubContainer() {
   }
 
   return (
-    <div>
+    <div className = "allPostsDiv">
       <div>
         {postArray.map((post, index) => (
           <div key={index}>{post}</div>
@@ -106,3 +98,4 @@ function SubContainer() {
 }
 
 export default SubContainer;
+// export { getPosts } ;
