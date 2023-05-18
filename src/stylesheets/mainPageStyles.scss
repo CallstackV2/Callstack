@@ -62,6 +62,8 @@ body {
 }
 
 .allPostsDiv {
+  margin-top: 25px;
+  padding-bottom: 25px;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -84,7 +86,7 @@ body {
 }
 
 #newPostTitle {
-  width: 50%;
+  width: 40%;
   margin: auto;
   margin-top: 5%;
   margin-bottom: 2%;
@@ -93,6 +95,7 @@ body {
 
 #newPostBody {
   width: 40%;
+  margin-bottom: 1%;
 }
 
 .tagDiv {
@@ -127,6 +130,7 @@ body {
   border: none;
   width: 70%;
   transition: 0.5s;
+  border-radius: 30px;
 }
 
 .mainPost:hover {

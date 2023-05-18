@@ -140,10 +140,9 @@ function SignUpPage() {
 
   return (
     <div>
-      <LeetCode />
+      {/* <LeetCode /> */}
       <div
         className="answeredLeetCode signuppageDiv"
-        style={{ display: "none" }}
       >
         <div>
           <i class="fa-solid fa-otter otterLogo"></i>
@@ -184,7 +183,7 @@ function SignUpPage() {
                 document.querySelector("#username").value,
                 document.querySelector("#password").value
               );
-              mockGet(mockData);
+              // mockGet(mockData);
             }}
             m
           >

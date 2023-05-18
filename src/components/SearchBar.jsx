@@ -86,7 +86,7 @@ export default function SearchBar() {
         className="mainPageSearchField"
       />
 
-      <SearchTags />
+      {/* <SearchTags /> */}
 
       <button
         className="mainPageSearchButton"

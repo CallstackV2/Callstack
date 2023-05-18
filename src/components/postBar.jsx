@@ -90,10 +90,10 @@ function PostBar() {
           rows="5"
         />
         <br />
-        <div className="dropdown tagDiv">
+        {/* <div className="dropdown tagDiv">
           <TagDropDownButton tagLink="Tag" />
           <TagLinks />
-        </div>
+        </div> */}
 
         <button
           className="postButtonSubmit"

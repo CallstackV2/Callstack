@@ -36,10 +36,12 @@ function PostBodyContainer() {
     <div>
       <PostBody />
       <Comment />
-      <CommentInput />
-      <button onClick={handleClick}>
-        Delete
-      </button>
+      <div className="commentContainer">
+        <CommentInput />
+        <button className="deleteButton" onClick={handleClick}>
+          Delete Post
+        </button>
+      </div>
     </div>
   );
 }

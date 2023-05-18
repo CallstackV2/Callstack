@@ -5,6 +5,10 @@
   height: auto;
   overflow-y: scroll;
   text-align: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .otterLogo {
@@ -55,6 +59,29 @@
   background-color: purple;
   border-radius: 6px 1px;
   color: white;
+}
+
+.deleteButton {
+  height: 50px;
+  width: 20vh;
+  margin-left: 2em;
+  background-color: rgb(238, 238, 238, 0.85);
+  border-radius: 6px 1px;
+  color: black;
+}
+
+.commentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 50px;
+}
+
+.commentBox {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 50px;
 }
 
 .currentCommentBody {
