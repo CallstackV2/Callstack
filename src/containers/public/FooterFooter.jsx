@@ -5,41 +5,41 @@ export default function FooterFooter() {
     <div className="footerFooter">
       <p className="bottomBottom">© 2023 Tasselled, Inc.</p>
       <p className="bottomBottom">
-        Build with <span className="bottomHeart">♥</span> by Sooji, Praise,
-        Evram, Hunter, and Kevin
+        Iterated with <span className="bottomHeart">♥</span> by James A., Yueran,
+        Mike B., James M., and Aalayah
       </p>
       <div className="bottomBottom">
         <a
           onClick={() => {
-            window.location.href = "https://github.com/sjk06";
+            window.location.href = "https://github.com/jadler999";
           }}
         >
           <i className="fa-brands fa-github githubLogo sjk06"></i>
         </a>
         <a
           onClick={() => {
-            window.location.href = "https://github.com/praisepelumi";
+            window.location.href = "https://github.com/kneazle714";
           }}
         >
           <i className="fa-brands fa-github githubLogo praisepelumi"></i>
         </a>
         <a
           onClick={() => {
-            window.location.href = "https://github.com/evramdawd";
+            window.location.href = "https://github.com/mikebednarz";
           }}
         >
           <i className="fa-brands fa-github githubLogo evramdawd"></i>
         </a>
         <a
           onClick={() => {
-            window.location.href = "https://github.com/HShaw215";
+            window.location.href = "https://github.com/j-mccoll";
           }}
         >
           <i className="fa-brands fa-github githubLogo HShaw215"></i>
         </a>
         <a
           onClick={() => {
-            window.location.href = "https://github.com/kfan1";
+            window.location.href = "https://github.com/AalayahOlaes";
           }}
         >
           <i className="fa-brands fa-github githubLogo kfan1"></i>

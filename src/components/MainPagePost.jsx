@@ -77,10 +77,9 @@ function MainPagePost(props) {
       >
         <h1>{post.postTitle}</h1>
         <p>{post.postBody}</p>
-        <div>{post.postTag}</div>
-        <div>{post.numLikes}</div>
-        <div>{post.numComments}</div>
-        <div>{post._id}</div>
+        {/* <div>{post.postTag}</div> */}
+        {/* <div>{post.numLikes}</div>
+        <div>{post.numComments}</div> */}
       </button>
 
       {/* <div>

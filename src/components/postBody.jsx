@@ -12,9 +12,9 @@ function PostBody() {
     <div className='currentClickedPost'>
       <h1>{currentPost.postTitle}</h1>
       <p>{currentPost.postBody}</p>
-      <div>{currentPost.postTag}</div>
+      {/* <div>{currentPost.postTag}</div>
       <div>{currentPost.numLikes}</div>
-      <div>{currentPost.numComments}</div>
+      <div>{currentPost.numComments}</div> */}
     </div>
   )
 }

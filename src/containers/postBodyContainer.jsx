@@ -56,9 +56,14 @@ function PostBodyContainer(props) {
     <div>
       <PostBody />
       <Comment />
-      <CommentInput />
-      <button onClick={deletePost}>Delete</button>
-      <button onClick={updatePost}>Edit</button>
+      <div className="commentContainer">
+        <CommentInput />
+        <button className="deleteButton" onClick={deletePost}>
+          Delete Post
+        </button>
+       <button onClick={updatePost}>Edit</button>
+      </div>
+
     </div>
   );
 }
