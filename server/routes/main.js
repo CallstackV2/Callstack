@@ -28,7 +28,7 @@ mainRouter.post(
 
 // Deleting posts
 mainRouter.post(
-  "/createPost",
+  "/deletePost",
   sessionController.isLoggedIn,
   mainController.deletePost,
   (req, res) => {
