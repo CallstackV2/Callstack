@@ -11,10 +11,10 @@ function MainPage() {
   if (currentUser) {
     return (
       <div className="mainPageDiv">
-        <img
+        {/* <img
           className="backgroundImg"
           src="https://wallpapercave.com/wp/wp4865484.jpg"
-        />
+        />  */}
         <MainPageNavBar />
         <PostBar />
         <SubContainer />

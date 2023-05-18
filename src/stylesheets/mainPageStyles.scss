@@ -8,6 +8,11 @@ body {
 
 .mainPageDiv {
   background-color: black;
+  background-image: url("https://wallpapercave.com/wp/wp4865484.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .backgroundImg {
@@ -33,10 +38,12 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  margin-left: 5%;
+  align-items: stretch;
 }
 
-.mainPageSearchBar {
-  margin-left: 5%;
+.mainPageSearchField {
+  min-width: 170px;
 }
 
 .postBar {
