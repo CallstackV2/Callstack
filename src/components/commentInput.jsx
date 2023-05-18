@@ -8,6 +8,39 @@ function CommentInput() {
   let currentPostId = useSelector((state) => state.userReducer.currentPostId);
   //onClick of comment button, send a post request of the comment to the database
   //then update state of currentComments
+  function getComments(postId) {
+    fetch('/main/getPostComments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON',
+      },
+      body: JSON.stringify({
+        postId: postId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        dispatch(setCurrentComments('delete'));
+        const commentArray = [];
+        for (let i = 0; i < res.length; i++) {
+          commentArray.push(res[i].commentBody);
+        }
+        console.log(`commentArray on main page: ${commentArray}`);
+        dispatch(
+          setCurrentComments(
+            commentArray
+            // UPDATE currentComments from HTML element to an object with properties:
+            // <div className="currentCommentBody">
+            //   {/* <p>{res[i].userId}</p> */}
+            //   <p>{res[i].commentBody}</p>
+            //   {/* <p>{mockComments[i].numLikes}</p> */}
+            // </div>
+          )
+        );
+      });
+  }
+
+
   function postComment(comment) {
     fetch("/main/createPostComments", {
       method: "POST",
@@ -22,8 +55,9 @@ function CommentInput() {
       if (res.body) {
         dispatch(setErrorMessage([]));
         dispatch(
-          setCurrentComments(<p className="currentCommentBody">{comment}</p>)
-        );
+          setCurrentComments({comment})
+        )
+        getComments(currentPostId)
       } else {
         dispatch(setErrorMessage([<p></p>]));
       }
