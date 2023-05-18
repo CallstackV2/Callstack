@@ -66,4 +66,14 @@ mainRouter.post(
   }
 );
 
+mainRouter.patch(
+  "/testingUpdatePost/:postID",
+  sessionController.isLoggedIn,
+  mainController.updatePost,
+  (req, res) => {
+    console.log(res.locals.updatedPost);
+    return res.status(200).send(res.locals.updatedPost);
+  }
+)
+
 module.exports = mainRouter;

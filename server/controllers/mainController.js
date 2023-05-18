@@ -59,6 +59,34 @@ mainController.deletePost = (req, res, next) => {
   });
 };
 
+// Updating a post
+
+mainController.updatePost = (req, res, next) => {
+  const { postID } = req.params;
+  const { postTitle, postBody, postTag, newTitle, newBody, newTags } = req.body;
+  Post.findOneAndUpdate(
+    {_id: postID},
+    {
+      postTitle: newTitle,
+      postBody: newBody,
+      postTag: newTags
+    },
+    {new: true}
+  )
+  .then((response) => {
+    console.log("response", response)
+    res.locals.updatedPost = response;
+    return next();
+  })
+  .catch((err) => {
+    return next({
+      log: `Error occured in mainController.updatePost: ${err}`,
+      status: 400,
+      message: { err: 'An error occured' }
+    });
+  });
+}
+
 // ---------- COMMENTS ----------
 
 // Get Post Comments (for individual post page):
