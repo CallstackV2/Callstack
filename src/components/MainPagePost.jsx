@@ -4,6 +4,7 @@ import { setCurrentPost, setCurrentPostId } from '../store/userReducer';
 
 //This will render the actual title and post
 //need to pull what the current title and post are from state
+//
 
 function MainPagePost(props) {
   const dispatch = useDispatch();
