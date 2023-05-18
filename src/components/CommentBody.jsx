@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CommentBody from './CommentBody.jsx';
 
-function Comment() {
-  const dispatch = useDispatch();
-  const currentComments = useSelector(
-    (state) => state.userReducer.currentComments
-  );
+function CommentBody(props) {
+//   const dispatch = useDispatch();
+//   const currentComments = useSelector(
+//     (state) => state.userReducer.currentComments
+//   );
 
-  const commentsArray = [];
+//   const commentsArray = [];
 
   // console.log(`currentComments.length: ${currentComments.length}`);
   // console.log(`typeof currentComments: ${typeof currentComments}`);
@@ -27,26 +26,23 @@ function Comment() {
   // console.log(`arr: ${arr}`);
   // console.log(`Array.isArray(arr): ${Array.isArray(arr)}`);
 
-  for (let i = 0; i < currentComments.length; i++) {
-    commentsArray.push(
-        // <CommentBody className="currentCommentBody" body={currentComments[i]} />
-        <div className="currentCommentBody">
-          {currentComments[i]}
-          </div>
-    );
-  }
-  console.log(`commentsArray: ${commentsArray}`);
+//   for (let i = 0; i < currentComments.length; i++) {
+//     commentsArray.push(
+//         < CommentBody className="currentCommentBody" body={currentComments[i]}/>
+//         // <div className="currentCommentBody">
+//         //   {currentComments[i]}
+//         //   </div>
+//     );
+//   }
+//   console.log(`commentsArray: ${commentsArray}`);
+console.log(`props.body: ${props.body}`);
   return (
-    <div class="commentsBoxBorder">
-    {commentsArray}
+    <div className="currentCommentBody">
+      {/* <p>{res[i].userId}</p> */}
+      <p>{props.body}</p>
+      {/* <p>{mockComments[i].numLikes}</p> */}
     </div>
-
-    // <div className="currentCommentBody">
-    //   {/* <p>{res[i].userId}</p> */}
-    //   <p>{res[i].commentBody}</p>
-    //   {/* <p>{mockComments[i].numLikes}</p> */}
-    // </div>
   );
 }
 
-export default Comment;
+export default CommentBody;
