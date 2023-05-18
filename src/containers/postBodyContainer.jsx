@@ -10,11 +10,36 @@ import Comment from "../components/comment.jsx";
 function PostBodyContainer() {
   const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.userReducer.errorMessage);
+
+  const handleClick = () => {
+    
+    fetch('/deletePost', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ currentPostId }),
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setReply(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log('failed deleting post');
+      });
+  }
+
   return (
     <div>
       <PostBody />
       <Comment />
       <CommentInput />
+      <button onClick={handleClick}>
+        Delete
+      </button>
     </div>
   );
 }

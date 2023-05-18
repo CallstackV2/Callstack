@@ -43,6 +43,22 @@ mainController.createPost = (req, res, next) => {
     });
 };
 
+// Deleting a post
+mainController.deletePost = (req, res, next) => {
+  const {  } = req.body;
+  Memory.findOneAndDelete({  })
+  .then(() => {
+    return next();
+  })
+  .catch((err) => {
+    return next({
+      log: 'Error occurred in mainController.deletePost.',
+      status: 400,
+      message: { err: 'An error occurred' },
+    });
+  });
+};
+
 // ---------- COMMENTS ----------
 
 // Get Post Comments (for individual post page):
