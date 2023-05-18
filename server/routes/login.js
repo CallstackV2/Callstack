@@ -51,4 +51,13 @@ loginRouter.post(
   (req, res) => res.sendStatus(200)
 );
 
+// LOGOUT REQUEST
+loginRouter.get(
+  "/logout",
+  (req, res) => {
+    res.clearCookie('ssid');
+    return res.sendStatus(204);
+  }
+)
+
 module.exports = loginRouter;
