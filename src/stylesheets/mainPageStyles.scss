@@ -38,12 +38,22 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin-left: 5%;
+  margin-left: 30%;
   align-items: stretch;
 }
 
 .mainPageSearchField {
   min-width: 170px;
+}
+
+.navBarRight {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+#logOut {
+  min-width: 80px;
 }
 
 .postBar {
