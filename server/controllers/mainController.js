@@ -45,12 +45,16 @@ mainController.createPost = (req, res, next) => {
 
 // Deleting a post
 mainController.deletePost = (req, res, next) => {
-  const {  } = req.body;
-  Memory.findOneAndDelete({  })
+  console.log('inside middleware');
+  const { postId } = req.body;
+  console.log(postId);
+  Post.findOneAndDelete({ _id: postId })
   .then(() => {
+    console.log('inside then');
     return next();
   })
   .catch((err) => {
+    console.log('inside catch');
     return next({
       log: 'Error occurred in mainController.deletePost.',
       status: 400,

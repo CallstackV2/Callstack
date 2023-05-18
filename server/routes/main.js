@@ -67,7 +67,8 @@ mainRouter.post(
 );
 
 mainRouter.patch(
-  "/testingUpdatePost/:postID",
+  // "/testingUpdatePost/:postID",
+  "/updatePost",
   sessionController.isLoggedIn,
   mainController.updatePost,
   (req, res) => {
