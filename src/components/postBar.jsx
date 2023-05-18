@@ -104,6 +104,10 @@ function PostBar() {
               document.querySelector("#newPostBody").value,
               "uncategorized"
             );
+            document.querySelector("#newPostTitle").value = ''
+            document.querySelector("#newPostBody").value = ''
+
+
           }}
         >
           Post
