@@ -26,6 +26,16 @@ mainRouter.post(
   }
 );
 
+// Deleting posts
+mainRouter.post(
+  "/createPost",
+  sessionController.isLoggedIn,
+  mainController.deletePost,
+  (req, res) => {
+    return res.status(200).send("POST DELETED!");
+  }
+);
+
 // Populate individual post page comments:
 mainRouter.post(
   "/getPostComments",
