@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPost, setCurrentPostId } from '../store/userReducer';
+import { useNavigate } from "react-router-dom";
 
 //This will render the actual title and post
 //need to pull what the current title and post are from state
@@ -8,6 +9,7 @@ import { setCurrentPost, setCurrentPostId } from '../store/userReducer';
 
 function MainPagePost(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentPost = useSelector((state) => state.userReducer.currentPost);
   // console.log(props.post)
   const { post } = props; 
@@ -31,7 +33,7 @@ function MainPagePost(props) {
           );
           getComments(post._id);
           dispatch(setCurrentPostId(post._id));
-          navigate(`/post`);
+          navigate(`../post`);
         }}
       >
         <h1>{post.postTitle}</h1>

@@ -12,12 +12,13 @@ function PostBodyContainer() {
   const errorMessage = useSelector((state) => state.userReducer.errorMessage);
 
   const handleClick = () => {
+    
     fetch('/deletePost', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({  }),
+      body: JSON.stringify({ currentPostId }),
     })
       .then((data) => {
         return data.json();
