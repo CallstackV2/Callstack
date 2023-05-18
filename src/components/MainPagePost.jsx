@@ -1,7 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPost, setCurrentPostId, setCurrentComments } from '../store/userReducer';
-import { useNavigate } from "react-router-dom";
+import {
+  setCurrentPost,
+  setCurrentPostId,
+  setCurrentComments,
+} from '../store/userReducer';
+import { useNavigate } from 'react-router-dom';
 
 //This will render the actual title and post
 //need to pull what the current title and post are from state
@@ -13,13 +17,13 @@ function MainPagePost(props) {
   // const currentPost = useSelector((state) => state.userReducer.currentPost);
   // const currentPostId = useSelector((state) => state.userReducer.currentPostId);
   // console.log(props.post)
-  const { post } = props; 
+  const { post } = props;
 
   function getComments(postId) {
-    fetch("/main/getPostComments", {
-      method: "POST",
+    fetch('/main/getPostComments', {
+      method: 'POST',
       headers: {
-        "Content-Type": "Application/JSON",
+        'Content-Type': 'Application/JSON',
       },
       body: JSON.stringify({
         postId: postId,
@@ -27,15 +31,16 @@ function MainPagePost(props) {
     })
       .then((response) => response.json())
       .then((res) => {
-        dispatch(setCurrentComments("delete"));
+        dispatch(setCurrentComments('delete'));
         const commentArray = [];
         for (let i = 0; i < res.length; i++) {
           commentArray.push(res[i].commentBody);
         }
-        console.log(`commentArray on main page: ${commentArray}`)
+        console.log(`commentArray on main page: ${commentArray}`);
         dispatch(
-          setCurrentComments( commentArray
-            // UPDATE currentComments from HTML element to an object with properties: 
+          setCurrentComments(
+            commentArray
+            // UPDATE currentComments from HTML element to an object with properties:
             // <div className="currentCommentBody">
             //   {/* <p>{res[i].userId}</p> */}
             //   <p>{res[i].commentBody}</p>
@@ -49,19 +54,19 @@ function MainPagePost(props) {
   return (
     <div>
       <button
-        className='mainPost'
+        className="mainPost"
         onClick={() => {
           dispatch(
             setCurrentPost(
-                post
-                //NNEEEEEEDS TO BE CHANGEDDDD TO THE 
-            //   <div className='currentClickedPost'>
-            //     <h1>{posts[i].postTitle}</h1>
-            //     <p>{posts[i].postBody}</p>
-            //     <div>{posts[i].postTag}</div>
-            //     <div>{posts[i].numLikes}</div>
-            //     <div>{posts[i].numComments}</div>
-            //   </div>
+              post
+              //NNEEEEEEDS TO BE CHANGEDDDD TO THE
+              //   <div className='currentClickedPost'>
+              //     <h1>{posts[i].postTitle}</h1>
+              //     <p>{posts[i].postBody}</p>
+              //     <div>{posts[i].postTag}</div>
+              //     <div>{posts[i].numLikes}</div>
+              //     <div>{posts[i].numComments}</div>
+              //   </div>
             )
           );
           // post._id should contain the postid for that specific post
